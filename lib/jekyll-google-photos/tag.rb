@@ -13,7 +13,7 @@ module JekyllGooglePhotos
     end
 
     def getImageLinks(url)
-      doc = Nokogiri::HTML(Net::HTTP.get(URI(url.strip)))
+      doc = Nokogiri::HTML(URI::open(url.strip).read)
       scripts = doc.xpath("//script")
       jsonString = ""
       for x in scripts do
